@@ -18,7 +18,6 @@ function Register() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  // ✅ STRICT VALIDATION
   const validate = () => {
     const err = {}
 

@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 🔴 404
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(
             ResourceNotFoundException ex,
@@ -22,7 +21,6 @@ public class GlobalExceptionHandler {
         return buildError(ex.getMessage(), HttpStatus.NOT_FOUND, request);
     }
 
-    // 🔴 400
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorResponse> handleBadRequest(
             BadRequestException ex,
@@ -31,7 +29,6 @@ public class GlobalExceptionHandler {
         return buildError(ex.getMessage(), HttpStatus.BAD_REQUEST, request);
     }
 
-    // 🔴 Validation errors
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidation(
             MethodArgumentNotValidException ex,
@@ -44,7 +41,6 @@ public class GlobalExceptionHandler {
         return buildError(msg, HttpStatus.BAD_REQUEST, request);
     }
 
-    // 🔴 403
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<ErrorResponse> handleAccessDenied(
             AccessDeniedException ex,
@@ -53,7 +49,6 @@ public class GlobalExceptionHandler {
         return buildError("Access denied", HttpStatus.FORBIDDEN, request);
     }
 
-    // 🔴 500
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(
             Exception ex,

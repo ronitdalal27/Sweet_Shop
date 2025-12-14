@@ -19,7 +19,6 @@ public class SweetService {
         this.sweetRepository = sweetRepository;
     }
 
-    // ---------- ADMIN ----------
     public SweetResponseDTO addSweet(SweetRequestDTO dto) {
         Sweet sweet = Sweet.builder()
                 .name(dto.getName())
@@ -31,7 +30,6 @@ public class SweetService {
         return mapToDTO(sweetRepository.save(sweet));
     }
 
-    // ---------- USER + ADMIN ----------
     public List<SweetResponseDTO> getAllSweets() {
         return sweetRepository.findAll()
                 .stream()
@@ -74,8 +72,6 @@ public class SweetService {
                 .toList();
     }
 
-
-    // ---------- ADMIN ----------
     public SweetResponseDTO updateSweet(Long id, SweetRequestDTO dto) {
         Sweet sweet = sweetRepository.findById(id)
                 .orElseThrow(() ->
@@ -96,7 +92,6 @@ public class SweetService {
         sweetRepository.deleteById(id);
     }
 
-    // ---------- USER ----------
     public SweetResponseDTO purchaseSweet(Long id) {
         Sweet sweet = sweetRepository.findById(id)
                 .orElseThrow(() ->
@@ -110,7 +105,6 @@ public class SweetService {
         return mapToDTO(sweetRepository.save(sweet));
     }
 
-    // ---------- ADMIN ----------
     public SweetResponseDTO restockSweet(Long id, int quantity) {
 
         if (quantity <= 0) {
@@ -125,7 +119,6 @@ public class SweetService {
         return mapToDTO(sweetRepository.save(sweet));
     }
 
-    // ---------- HELPER ----------
     private SweetResponseDTO mapToDTO(Sweet sweet) {
         return new SweetResponseDTO(
                 sweet.getId(),

@@ -13,7 +13,6 @@ function Dashboard() {
   const [sweets, setSweets] = useState([])
   const { isAdmin } = useAuth()
 
-  // 🔍 Search state
   const [search, setSearch] = useState({
     name: "",
     category: "",
@@ -21,7 +20,7 @@ function Dashboard() {
     maxPrice: "",
   })
 
-  // Load all sweets
+
   const loadSweets = async () => {
     const res = await getAllSweets()
     setSweets(res.data)
@@ -31,7 +30,7 @@ function Dashboard() {
     loadSweets()
   }, [])
 
-  // 🔍 Handle search
+
   const handleSearch = async (e) => {
   e.preventDefault()
 
@@ -53,7 +52,6 @@ function Dashboard() {
     params.maxPrice = Number(search.maxPrice)
   }
 
-  // If no filters → load all
   if (Object.keys(params).length === 0) {
     loadSweets()
     return
@@ -85,7 +83,6 @@ function Dashboard() {
         Sweet Shop Dashboard
       </h1>
 
-      {/* 🔍 SEARCH UI */}
       <form
         onSubmit={handleSearch}
         className="bg-white p-4 rounded shadow mb-6 grid grid-cols-1 md:grid-cols-4 gap-4"

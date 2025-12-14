@@ -23,8 +23,6 @@ public class SweetController {
         this.sweetService = sweetService;
     }
 
-    // ================= ADMIN =================
-
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<SweetResponseDTO> addSweet(
@@ -58,8 +56,6 @@ public class SweetController {
         return ResponseEntity.ok(sweetService.restockSweet(id, quantity));
     }
 
-    // ================= USER + ADMIN =================
-
     @GetMapping
     public ResponseEntity<List<SweetResponseDTO>> getAllSweets() {
         return ResponseEntity.ok(sweetService.getAllSweets());
@@ -72,7 +68,6 @@ public class SweetController {
             @RequestParam(required = false) BigDecimal minPrice,
             @RequestParam(required = false) BigDecimal maxPrice) {
 
-        // Priority-based logic (clean + predictable)
 
         if (name != null && !name.isBlank()) {
             return ResponseEntity.ok(sweetService.searchByName(name));
@@ -102,9 +97,6 @@ public class SweetController {
 
         return ResponseEntity.badRequest().build();
     }
-
-
-    // ================= USER =================
 
     @PostMapping("/{id}/purchase")
     public ResponseEntity<SweetResponseDTO> purchaseSweet(

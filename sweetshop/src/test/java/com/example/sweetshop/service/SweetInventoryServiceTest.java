@@ -28,8 +28,6 @@ class SweetInventoryServiceTest {
     @InjectMocks
     private SweetService sweetService;
 
-    // ---------- PURCHASE ----------
-
     @Test
     void shouldPurchaseSweetAndReduceQuantity() {
 
@@ -85,8 +83,6 @@ class SweetInventoryServiceTest {
 
         assertEquals("Sweet not found with id 1", ex.getMessage());
     }
-
-    // ---------- RESTOCK ----------
 
     @Test
     void shouldRestockSweetAndIncreaseQuantity() {

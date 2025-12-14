@@ -28,8 +28,6 @@ class SweetServiceTest {
     @InjectMocks
     private SweetService sweetService;
 
-    // ---------- ADD SWEET ----------
-
     @Test
     void shouldAddNewSweet() {
 
@@ -56,7 +54,6 @@ class SweetServiceTest {
         assertEquals(100, response.getQuantity());
     }
 
-    // ---------- GET ALL ----------
 
     @Test
     void shouldReturnAllSweets() {
@@ -83,7 +80,6 @@ class SweetServiceTest {
         assertEquals(2, result.size());
     }
 
-    // ---------- SEARCH ----------
 
     @Test
     void shouldSearchSweetsByName() {
@@ -151,8 +147,6 @@ class SweetServiceTest {
         assertEquals("Ladoo", result.get(0).getName());
     }
 
-    // ---------- UPDATE ----------
-
     @Test
     void shouldUpdateSweetSuccessfully() {
 
@@ -199,7 +193,6 @@ class SweetServiceTest {
         assertEquals("Sweet not found with id 99", ex.getMessage());
     }
 
-    // ---------- DELETE ----------
 
     @Test
     void shouldDeleteSweetSuccessfully() {

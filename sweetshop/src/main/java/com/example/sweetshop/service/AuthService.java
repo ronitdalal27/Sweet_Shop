@@ -26,7 +26,6 @@ public class AuthService {
         this.jwtUtil = jwtUtil;
     }
 
-    // REGISTER USER
     public String register(AuthRequest request) {
 
         if (userRepository.existsByUsername(request.getUsername())) {
@@ -37,7 +36,6 @@ public class AuthService {
             throw new BadRequestException("Email already exists");
         }
 
-        // 🔐 ROLE HANDLING
         String role = request.getRole();
 
         if (role == null || role.isBlank()) {
@@ -66,7 +64,6 @@ public class AuthService {
         return "User registered successfully with role " + role;
     }
 
-    // LOGIN USER
     public AuthResponse login(AuthRequest request) {
 
         User user = userRepository.findByUsername(request.getUsername())

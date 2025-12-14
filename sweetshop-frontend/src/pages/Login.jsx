@@ -17,7 +17,6 @@ function Login() {
       const res = await loginUser(form)
       localStorage.setItem("token", res.data.token)
 
-      // Simple role-based redirect (we'll improve later)
       navigate("/")
     } catch (err) {
       setError("Invalid username or password")

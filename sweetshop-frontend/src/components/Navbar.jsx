@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <nav className="bg-gray-800 text-white px-6 py-3 flex justify-between">
-      <Link to="/" className="font-bold">🍬 Sweet Shop</Link>
+      <Link to="/" className="font-bold">Sweet Shop</Link>
 
       <div className="space-x-4">
         {!user ? (
